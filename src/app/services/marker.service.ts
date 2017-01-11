@@ -22,4 +22,19 @@ export class MarkerService extends Init {
     // Set the markers again
     localStorage.setItem('markers', JSON.stringify(markers));
   }
+
+  updateMarker(marker, newLat, newLng) {
+    // Fetch markers
+    var markers = JSON.parse(localStorage.getItem('markers'));
+
+    for (var i = 0; i < markers.length; i++) {
+      if (marker.lat == markers[i].lat && marker.lng == markers[i].lng) {
+        markers[i].lat = newLat;
+        markers[i].lng = newLng;
+      }
+    }
+    
+    // Set the markers again
+    localStorage.setItem('markers', JSON.stringify(markers));
+  }
 }
