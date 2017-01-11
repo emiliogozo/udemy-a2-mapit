@@ -13,6 +13,12 @@ export class AppComponent {
   lat: number = 42.858217;
   lng: number = -70.929990;
 
+  // Values
+  markerName: string;
+  markerLat: string;
+  markerLng: string;
+  markerDraggable: string;
+
   // Markers
   markers: marker[] = [
     {
@@ -64,6 +70,25 @@ export class AppComponent {
 
     var newLat = $event.coords.lat;
     var newLng = $event.coords.lng;
+  }
+
+  addMarker() {
+    console.log('Adding Marker');
+
+    if (this.markerDraggable == 'yes') {
+      var isDraggable = true;
+    } else {
+      var isDraggable = false;
+    }
+
+    var newMarker = {
+      name: this.markerName,
+      lat: parseFloat(this.markerLat),
+      lng: parseFloat(this.markerLng),
+      draggable: isDraggable
+    };
+
+    this.markers.push(newMarker);
   }
 }
 
